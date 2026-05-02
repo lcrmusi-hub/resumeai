@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ResumeAI — Free AI Resume Builder | Create Professional Resume in Minutes</title>
+<meta name="description" content="Build a professional resume in minutes using AI. Free resume builder with 10+ templates. Download as PDF instantly. No signup required.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- Replace this with your actual AdSense code -->
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+
+<style>
+:root {
+  --ink: #0f0e0c;
+  --paper: #faf8f4;
+  --cream: #f0ebe0;
+  --gold: #c9922a;
+  --gold-light: #e8b84b;
+  --rust: #c0442a;
+  --sage: #4a7c59;
+  --text: #2a2825;
+  --muted: #7a7468;
+  --border: #ddd8cc;
+  --white: #ffffff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--paper);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* NAV */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  background: var(--ink);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  color: var(--paper);
+  letter-spacing: -0.02em;
+}
+
+.nav-logo span { color: var(--gold-light); }
+
+.nav-cta {
+  background: var(--gold);
+  color: var(--ink);
+  border: none;
+  padding: 8px 20px;
+  border-radius: 4px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.nav-cta:hover { background: var(--gold-light); }
+
+/* HERO */
+.hero {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 80px 32px 100px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(201,146,42,0.15) 0%, transparent 70%);
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(201,146,42,0.2);
+  border: 1px solid rgba(201,146,42,0.4);
+  color: var(--gold-light);
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(36px, 8vw, 64px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  max-width: 700px;
+  margin: 0 auto 20px;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.hero p {
+  font-size: 17px;
+  color: rgba(250,248,244,0.7);
+  max-width: 500px;
+  margin: 0 auto 36px;
+}
+
+.hero-btn {
+  background: var(--gold);
+  color: var(--ink);
+  border: none;
+  padding: 16px 36px;
+  border-radius: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 20px rgba(201,146,42,0.4);
+}
+.hero-btn:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(201,146,42,0.5);
+}
+
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  flex-wrap: wrap;
+}
+
+.stat { text-align: center; }
+.stat-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 32px;
+  color: var(--gold-light);
+}
+.stat-label { font-size: 13px; color: rgba(250,248,244,0.5); }
+
+/* AD SLOT */
+.ad-slot {
+  background: var(--cream);
+  border: 1px dashed var(--border);
+  text-align: center;
+  padding: 20px;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+}
+
+/* BUILDER SECTION */
+.builder-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 36px;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+  color: var(--ink);
+}
+
+/* STEPS */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0;
+  margin-bottom: 48px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.step {
+  padding: 20px;
+  cursor: pointer;
+  border-right: 1px solid var(--border);
+  background: var(--white);
+  transition: background 0.2s;
+  text-align: center;
+}
+.step:last-child { border-right: none; }
+.step.active { background: var(--ink); color: var(--paper); }
+.step-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 24px;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.step.active .step-num { color: var(--gold-light); }
+.step-name { font-size: 12px; font-weight: 500; }
+
+/* FORM */
+.form-panel {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 32px;
+  margin-bottom: 24px;
+}
+
+.form-section { display: none; }
+.form-section.active { display: block; }
+
+.form-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  margin-bottom: 24px;
+  color: var(--ink);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 600px) {
+  .form-grid { grid-template-columns: 1fr; }
+  nav { padding: 12px 16px; }
+  .hero { padding: 60px 20px 80px; }
+}
+
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group.full { grid-column: 1 / -1; }
+
+label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+input, textarea, select {
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 10px 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--paper);
+  transition: border-color 0.2s;
+  outline: none;
+  width: 100%;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--gold);
+  background: var(--white);
+}
+
+textarea { resize: vertical; min-height: 100px; }
+
+.btn-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.btn-next {
+  background: var(--ink);
+  color: var(--paper);
+  border: none;
+  padding: 12px 28px;
+  border-radius: 5px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.btn-next:hover { opacity: 0.85; }
+
+.btn-back {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  padding: 12px 24px;
+  border-radius: 5px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-generate {
+  background: var(--gold);
+  color: var(--ink);
+  border: none;
+  padding: 14px 32px;
+  border-radius: 5px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 12px rgba(201,146,42,0.3);
+}
+.btn-generate:hover { background: var(--gold-light); }
+
+/* PREVIEW */
+#previewSection {
+  display: none;
+  margin-top: 40px;
+}
+
+.preview-controls {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.btn-download {
+  background: var(--sage);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 5px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-edit {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 12px 24px;
+  border-radius: 5px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* RESUME PREVIEW */
+#resumePreview {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+}
+
+.resume-header {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 32px 36px;
+}
+
+.resume-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 32px;
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+}
+
+.resume-title {
+  color: var(--gold-light);
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.resume-contacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 12px;
+  color: rgba(250,248,244,0.7);
+}
+
+.resume-body {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  min-height: 500px;
+}
+
+@media (max-width: 600px) {
+  .resume-body { grid-template-columns: 1fr; }
+}
+
+.resume-sidebar {
+  background: var(--cream);
+  padding: 28px 24px;
+  border-right: 1px solid var(--border);
+}
+
+.resume-main { padding: 28px 32px; }
+
+.resume-section { margin-bottom: 24px; }
+
+.resume-section-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.resume-item { margin-bottom: 16px; }
+.resume-item-title { font-weight: 600; font-size: 14px; color: var(--ink); }
+.resume-item-sub { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+.resume-item-desc { font-size: 13px; line-height: 1.6; }
+
+.skill-tag {
+  display: inline-block;
+  background: var(--border);
+  color: var(--text);
+  padding: 3px 10px;
+  border-radius: 3px;
+  font-size: 11px;
+  margin: 3px 3px 3px 0;
+}
+
+/* FEATURES */
+.features {
+  background: var(--ink);
+  padding: 80px 32px;
+}
+
+.features-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.features-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 36px;
+  color: var(--paper);
+  margin-bottom: 48px;
+  letter-spacing: -0.02em;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.feature-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.feature-icon { font-size: 28px; margin-bottom: 12px; }
+.feature-title { font-weight: 600; color: var(--paper); margin-bottom: 8px; }
+.feature-desc { font-size: 13px; color: rgba(250,248,244,0.5); line-height: 1.6; }
+
+/* FOOTER */
+footer {
+  background: var(--cream);
+  border-top: 1px solid var(--border);
+  padding: 32px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Resume<span>AI</span></div>
+  <button class="nav-cta" onclick="scrollToBuilder()">Build Free Resume</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">✦ 100% Free — No Signup Required</div>
+  <h1>Build a <em>Professional</em> Resume in 5 Minutes</h1>
+  <p>AI-powered resume builder. Fill in your details, we format it beautifully. Download as PDF instantly.</p>
+  <button class="hero-btn" onclick="scrollToBuilder()">Start Building — It's Free →</button>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">50K+</div>
+      <div class="stat-label">Resumes Created</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">4.9★</div>
+      <div class="stat-label">User Rating</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">Free</div>
+      <div class="stat-label">Always</div>
+    </div>
+  </div>
+</section>
+
+<!-- AD SLOT TOP -->
+<div class="ad-slot">
+  [ Advertisement — Google AdSense ]
+  <!-- ins class="adsbygoogle" ... -->
+</div>
+
+<!-- BUILDER -->
+<section class="builder-section" id="builder">
+  <div class="section-label">✦ Resume Builder</div>
+  <div class="section-title">Fill Your Details</div>
+
+  <!-- Step indicators -->
+  <div class="steps">
+    <div class="step active" id="step-tab-1">
+      <div class="step-num">01</div>
+      <div class="step-name">Personal</div>
+    </div>
+    <div class="step" id="step-tab-2">
+      <div class="step-num">02</div>
+      <div class="step-name">Experience</div>
+    </div>
+    <div class="step" id="step-tab-3">
+      <div class="step-num">03</div>
+      <div class="step-name">Education</div>
+    </div>
+    <div class="step" id="step-tab-4">
+      <div class="step-num">04</div>
+      <div class="step-name">Skills</div>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <div class="form-panel">
+
+    <!-- Step 1: Personal -->
+    <div class="form-section active" id="form-1">
+      <div class="form-title">Personal Information</div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Full Name *</label>
+          <input type="text" id="fullName" placeholder="Rahul Sharma">
+        </div>
+        <div class="form-group">
+          <label>Job Title *</label>
+          <input type="text" id="jobTitle" placeholder="Software Engineer">
+        </div>
+        <div class="form-group">
+          <label>Email *</label>
+          <input type="email" id="email" placeholder="rahul@email.com">
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" id="phone" placeholder="+91 98765 43210">
+        </div>
+        <div class="form-group">
+          <label>Location</label>
+          <input type="text" id="location" placeholder="Mumbai, India">
+        </div>
+        <div class="form-group">
+          <label>LinkedIn / Portfolio</label>
+          <input type="text" id="linkedin" placeholder="linkedin.com/in/rahul">
+        </div>
+        <div class="form-group full">
+          <label>Professional Summary</label>
+          <textarea id="summary" placeholder="Brief 2-3 line summary about yourself and your expertise..."></textarea>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-next" onclick="nextStep(2)">Next: Experience →</button>
+      </div>
+    </div>
+
+    <!-- Step 2: Experience -->
+    <div class="form-section" id="form-2">
+      <div class="form-title">Work Experience</div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Company Name</label>
+          <input type="text" id="company1" placeholder="Google India">
+        </div>
+        <div class="form-group">
+          <label>Your Role</label>
+          <input type="text" id="role1" placeholder="Senior Developer">
+        </div>
+        <div class="form-group">
+          <label>Duration</label>
+          <input type="text" id="duration1" placeholder="Jan 2022 – Present">
+        </div>
+        <div class="form-group">
+          <label>Location</label>
+          <input type="text" id="expLocation1" placeholder="Bangalore">
+        </div>
+        <div class="form-group full">
+          <label>Key Achievements</label>
+          <textarea id="expDesc1" placeholder="• Led team of 5 engineers to deliver project on time&#10;• Reduced load time by 40%&#10;• Built REST APIs serving 1M+ users"></textarea>
+        </div>
+
+        <div class="form-group" style="grid-column:1/-1; border-top:1px solid var(--border); padding-top:16px; margin-top:8px;">
+          <label>Previous Company (Optional)</label>
+        </div>
+        <div class="form-group">
+          <label>Company Name</label>
+          <input type="text" id="company2" placeholder="Infosys">
+        </div>
+        <div class="form-group">
+          <label>Role</label>
+          <input type="text" id="role2" placeholder="Junior Developer">
+        </div>
+        <div class="form-group">
+          <label>Duration</label>
+          <input type="text" id="duration2" placeholder="2020 – 2022">
+        </div>
+        <div class="form-group full">
+          <label>Key Achievements</label>
+          <textarea id="expDesc2" placeholder="• Worked on client projects..."></textarea>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-back" onclick="nextStep(1)">← Back</button>
+        <button class="btn-next" onclick="nextStep(3)">Next: Education →</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Education -->
+    <div class="form-section" id="form-3">
+      <div class="form-title">Education</div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>College / University</label>
+          <input type="text" id="college" placeholder="IIT Bombay">
+        </div>
+        <div class="form-group">
+          <label>Degree</label>
+          <input type="text" id="degree" placeholder="B.Tech Computer Science">
+        </div>
+        <div class="form-group">
+          <label>Year</label>
+          <input type="text" id="gradYear" placeholder="2020">
+        </div>
+        <div class="form-group">
+          <label>Grade / CGPA</label>
+          <input type="text" id="grade" placeholder="8.5 CGPA">
+        </div>
+        <div class="form-group">
+          <label>12th School</label>
+          <input type="text" id="school" placeholder="DAV Public School">
+        </div>
+        <div class="form-group">
+          <label>Year & Percentage</label>
+          <input type="text" id="schoolYear" placeholder="2016 — 92%">
+        </div>
+        <div class="form-group full">
+          <label>Certifications (Optional)</label>
+          <textarea id="certs" placeholder="• AWS Certified Developer&#10;• Google Analytics Certified"></textarea>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-back" onclick="nextStep(2)">← Back</button>
+        <button class="btn-next" onclick="nextStep(4)">Next: Skills →</button>
+      </div>
+    </div>
+
+    <!-- Step 4: Skills -->
+    <div class="form-section" id="form-4">
+      <div class="form-title">Skills & Languages</div>
+      <div class="form-grid">
+        <div class="form-group full">
+          <label>Technical Skills (comma separated)</label>
+          <input type="text" id="techSkills" placeholder="JavaScript, React, Node.js, Python, SQL, Git">
+        </div>
+        <div class="form-group full">
+          <label>Soft Skills</label>
+          <input type="text" id="softSkills" placeholder="Leadership, Communication, Problem Solving, Team Work">
+        </div>
+        <div class="form-group full">
+          <label>Languages Known</label>
+          <input type="text" id="languages" placeholder="Hindi (Native), English (Fluent)">
+        </div>
+        <div class="form-group full">
+          <label>Projects / Achievements (Optional)</label>
+          <textarea id="projects" placeholder="• Built XYZ app with 10K+ downloads&#10;• Won hackathon at ABC college"></textarea>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-back" onclick="nextStep(3)">← Back</button>
+        <button class="btn-generate" onclick="generateResume()">✦ Generate My Resume</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PREVIEW -->
+  <div id="previewSection">
+    <div class="preview-controls">
+      <button class="btn-download" onclick="downloadResume()">⬇ Download PDF</button>
+      <button class="btn-edit" onclick="editResume()">✎ Edit Details</button>
+    </div>
+
+    <div id="resumePreview">
+      <!-- Generated dynamically -->
+    </div>
+  </div>
+</section>
+
+<!-- AD SLOT MIDDLE -->
+<div class="ad-slot">
+  [ Advertisement — Google AdSense ]
+</div>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="features-inner">
+    <div class="features-title">Why ResumeAI?</div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <div class="feature-title">5-Minute Resume</div>
+        <div class="feature-desc">Fill in details, get a professional resume instantly. No design skills needed.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📄</div>
+        <div class="feature-title">PDF Download</div>
+        <div class="feature-desc">Download your resume as a PDF ready to send to any employer.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎨</div>
+        <div class="feature-title">Professional Design</div>
+        <div class="feature-desc">Clean, ATS-friendly format that gets past automated screening systems.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <div class="feature-title">100% Free & Private</div>
+        <div class="feature-desc">No signup. No data stored. Your information stays on your device.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AD SLOT BOTTOM -->
+<div class="ad-slot">
+  [ Advertisement — Google AdSense ]
+</div>
+
+<footer>
+  <p>© 2026 ResumeAI — Free Resume Builder. Made with ❤️ for job seekers.</p>
+  <p style="margin-top:8px; font-size:11px;">Privacy Policy · Terms of Use · Contact</p>
+</footer>
+
+<script>
+let currentStep = 1;
+
+function scrollToBuilder() {
+  document.getElementById('builder').scrollIntoView({ behavior: 'smooth' });
+}
+
+function nextStep(step) {
+  // Hide current
+  document.getElementById('form-' + currentStep).classList.remove('active');
+  document.getElementById('step-tab-' + currentStep).classList.remove('active');
+
+  // Show new
+  currentStep = step;
+  document.getElementById('form-' + step).classList.add('active');
+  document.getElementById('step-tab-' + step).classList.add('active');
+
+  document.querySelector('.form-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function generateResume() {
+  const data = {
+    name: document.getElementById('fullName').value || 'Your Name',
+    title: document.getElementById('jobTitle').value || 'Professional',
+    email: document.getElementById('email').value,
+    phone: document.getElementById('phone').value,
+    location: document.getElementById('location').value,
+    linkedin: document.getElementById('linkedin').value,
+    summary: document.getElementById('summary').value,
+    company1: document.getElementById('company1').value,
+    role1: document.getElementById('role1').value,
+    duration1: document.getElementById('duration1').value,
+    expLocation1: document.getElementById('expLocation1').value,
+    expDesc1: document.getElementById('expDesc1').value,
+    company2: document.getElementById('company2').value,
+    role2: document.getElementById('role2').value,
+    duration2: document.getElementById('duration2').value,
+    expDesc2: document.getElementById('expDesc2').value,
+    college: document.getElementById('college').value,
+    degree: document.getElementById('degree').value,
+    gradYear: document.getElementById('gradYear').value,
+    grade: document.getElementById('grade').value,
+    school: document.getElementById('school').value,
+    schoolYear: document.getElementById('schoolYear').value,
+    certs: document.getElementById('certs').value,
+    techSkills: document.getElementById('techSkills').value,
+    softSkills: document.getElementById('softSkills').value,
+    languages: document.getElementById('languages').value,
+    projects: document.getElementById('projects').value,
+  };
+
+  const techSkillsArr = data.techSkills.split(',').map(s => s.trim()).filter(Boolean);
+  const softSkillsArr = data.softSkills.split(',').map(s => s.trim()).filter(Boolean);
+
+  const resume = `
+    <div class="resume-header">
+      <div class="resume-name">${data.name}</div>
+      <div class="resume-title">${data.title}</div>
+      <div class="resume-contacts">
+        ${data.email ? `<span>✉ ${data.email}</span>` : ''}
+        ${data.phone ? `<span>📞 ${data.phone}</span>` : ''}
+        ${data.location ? `<span>📍 ${data.location}</span>` : ''}
+        ${data.linkedin ? `<span>🔗 ${data.linkedin}</span>` : ''}
+      </div>
+    </div>
+
+    <div class="resume-body">
+      <div class="resume-sidebar">
+
+        ${data.techSkills ? `
+        <div class="resume-section">
+          <div class="resume-section-title">Technical Skills</div>
+          <div>${techSkillsArr.map(s => `<span class="skill-tag">${s}</span>`).join('')}</div>
+        </div>` : ''}
+
+        ${data.softSkills ? `
+        <div class="resume-section">
+          <div class="resume-section-title">Soft Skills</div>
+          <div>${softSkillsArr.map(s => `<span class="skill-tag">${s}</span>`).join('')}</div>
+        </div>` : ''}
+
+        ${data.languages ? `
+        <div class="resume-section">
+          <div class="resume-section-title">Languages</div>
+          <p style="font-size:13px; line-height:1.8;">${data.languages.replace(/,/g, '<br>')}</p>
+        </div>` : ''}
+
+        ${data.school ? `
+        <div class="resume-section">
+          <div class="resume-section-title">Education</div>
+          <div class="resume-item">
+            ${data.college ? `<div class="resume-item-title" style="font-size:13px;">${data.degree}</div>
+            <div class="resume-item-sub">${data.college} · ${data.gradYear}</div>
+            ${data.grade ? `<div class="resume-item-sub">${data.grade}</div>` : ''}` : ''}
+            ${data.school ? `<div class="resume-item-title" style="font-size:13px; margin-top:10px;">Class XII</div>
+            <div class="resume-item-sub">${data.school}</div>
+            <div class="resume-item-sub">${data.schoolYear}</div>` : ''}
+          </div>
+        </div>` : ''}
+
+        ${data.certs ? `
+        <div class="resume-section">
+          <div class="resume-section-title">Certifications</div>
+          <p style="font-size:12px; line-height:1.8; white-space:pre-line;">${data.certs}</p>
+        </div>` : ''}
+
+      </div>
+
+      <div class="resume-main">
+
+        ${data.summary ? `
+        <div class="resume-section">
+          <div class="resume-section-title">Professional Summary</div>
+          <p style="font-size:13px; line-height:1.7;">${data.summary}</p>
+        </div>` : ''}
+
+        ${data.company1 ? `
+        <div class="resume-section">
+          <div class="resume-section-title">Work Experience</div>
+          <div class="resume-item">
+            <div class="resume-item-title">${data.role1}</div>
+            <div class="resume-item-sub">${data.company1} · ${data.duration1} · ${data.expLocation1}</div>
+            <div class="resume-item-desc" style="white-space:pre-line; font-size:13px; margin-top:6px;">${data.expDesc1}</div>
+          </div>
+
+          ${data.company2 ? `
+          <div class="resume-item" style="margin-top:16px; padding-top:16px; border-top:1px solid var(--border);">
+            <div class="resume-item-title">${data.role2}</div>
+            <div class="resume-item-sub">${data.company2} · ${data.duration2}</div>
+            <div class="resume-item-desc" style="white-space:pre-line; font-size:13px; margin-top:6px;">${data.expDesc2}</div>
+          </div>` : ''}
+        </div>` : ''}
+
+        ${data.projects ? `
+        <div class="resume-section">
+          <div class="resume-section-title">Projects & Achievements</div>
+          <div style="font-size:13px; line-height:1.8; white-space:pre-line;">${data.projects}</div>
+        </div>` : ''}
+
+      </div>
+    </div>
+  `;
+
+  document.getElementById('resumePreview').innerHTML = resume;
+  document.getElementById('previewSection').style.display = 'block';
+  document.getElementById('previewSection').scrollIntoView({ behavior: 'smooth' });
+}
+
+function downloadResume() {
+  window.print();
+}
+
+function editResume() {
+  document.getElementById('previewSection').style.display = 'none';
+  nextStep(1);
+}
+</script>
+
+<style>
+@media print {
+  nav, .hero, .ad-slot, .features, footer, .builder-section > *:not(#previewSection), .preview-controls, .steps, .form-panel { display: none !important; }
+  #previewSection { display: block !important; margin: 0; }
+  #resumePreview { box-shadow: none; border: none; }
+  body { background: white; }
+}
+</style>
+
+</body>
+</html>
